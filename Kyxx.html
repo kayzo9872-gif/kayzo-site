@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYXX Services — Order Jasa Digital Cepat & Bergaransi</title>
+    <meta name="description" content="Pesan layanan hapus akun, lacak lokasi, dan pemulihan akun. Proses cepat, bukti jelas, pembayaran aman lewat DANA atau BRI.">
+    <meta property="og:title" content="KYXX Services — Order Jasa Digital Cepat & Bergaransi">
+    <meta property="og:description" content="Pesan layanan hapus akun, lacak lokasi, dan pemulihan akun. Proses cepat, bukti jelas, pembayaran aman.">
+    <meta property="og:image" content="https://i.ibb.co/GvG2LFKY/IMG-20260821-WA0005.jpg">
+    <meta name="twitter:image" content="https://i.ibb.co/GvG2LFKY/IMG-20260821-WA0005.jpg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom CSS Variables */
+        :root {
+            --radius: 0.75rem;
+            --background: oklch(0.99 0.002 90);
+            --foreground: oklch(0.19 0.012 285);
+            --ink: oklch(0.19 0.012 285);
+            --surface: oklch(0.955 0.004 90);
+            --card: oklch(0.99 0.002 90);
+            --card-foreground: oklch(0.19 0.012 285);
+            --popover: oklch(0.99 0.002 90);
+            --popover-foreground: oklch(0.19 0.012 285);
+            --primary: oklch(0.19 0.012 285);
+            --primary-foreground: oklch(0.99 0.002 90);
+            --secondary: oklch(0.955 0.004 90);
+            --secondary-foreground: oklch(0.19 0.012 285);
+            --muted: oklch(0.955 0.004 90);
+            --muted-foreground: oklch(0.5 0.008 285);
+            --accent: oklch(0.53 0.204 25.5);
+            --accent-foreground: oklch(0.99 0.002 90);
+            --accent-soft: oklch(0.94 0.03 25.5);
+            --destructive: oklch(0.53 0.204 25.5);
+            --destructive-foreground: oklch(0.99 0.002 90);
+            --success: oklch(0.6 0.13 155);
+            --border: oklch(0.19 0.012 285 / 12%);
+            --input: oklch(0.19 0.012 285 / 15%);
+            --ring: oklch(0.53 0.204 25.5);
+        }
+
+        /* Base Styles */
+        body {
+            background-color: #fcfcfc;
+            color: #1a1a1a;
+            font-family: 'DM Sans', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Custom Classes */
+        .bg-background { background-color: #fcfcfc; }
+        .bg-surface { background-color: #f5f5f5; }
+        .bg-primary { background-color: #1a1a1a; }
+        .bg-accent { background-color: #c41e3a; }
+        .bg-accent-soft { background-color: #fce4e8; }
+        
+        .text-foreground { color: #1a1a1a; }
+        .text-muted-foreground { color: #737373; }
+        .text-primary-foreground { color: #fcfcfc; }
+        .text-accent { color: #c41e3a; }
+        .text-accent-foreground { color: #fcfcfc; }
+        .text-success { color: #22c55e; }
+        .text-destructive { color: #c41e3a; }
+
+        .border-border { border-color: rgba(26, 26, 26, 0.12); }
+        .border-input { border-color: rgba(26, 26, 26, 0.15); }
+        .border-accent { border-color: #c41e3a; }
+        .border-destructive { border-color: #c41e3a; }
+
+        .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; }
+        .font-body { font-family: 'DM Sans', system-ui, sans-serif; }
+
+        /* Animation Keyframes */
+        @keyframes fadeup {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-4px); }
+            40%, 80% { transform: translateX(4px); }
+        }
+
+        .animate-fadeup {
+            animation: fadeup 0.55s cubic-bezier(0.32, 0.72, 0, 1) both;
+        }
+
+        .animate-shake {
+            animation: shake 0.32s ease-in-out;
+        }
+
+        /* Nav Link Effect */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            height: 1.5px;
+            width: 100%;
+            background: #c41e3a;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Ring Styles */
+        .ring-accent\/15 {
+            --tw-ring-color: rgba(196, 30, 58, 0.15);
+        }
+
+        .ring-destructive\/15 {
+            --tw-ring-color: rgba(196, 30, 58, 0.15);
+        }
+
+        .ring-ring\/25 {
+            --tw-ring-color: rgba(196, 30, 58, 0.25);
+        }
+
+        /* Input focus styles */
+        input:focus, select:focus {
+            outline: none;
+            border-color: #c41e3a;
+            box-shadow: 0 0 0 4px rgba(196, 30, 58, 0.15);
+        }
+
+        /* Responsive */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav style="position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(26, 26, 26, 0.12); background-color: rgba(252, 252, 252, 0.85); backdrop-filter: blur(12px);">
+            <div style="margin: 0 auto; max-width: 72rem; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+                    <img src="https://i.ibb.co/GvG2LFKY/IMG-20260821-WA0005.jpg" alt="Logo KYXX Services" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(26, 26, 26, 0.12); flex-shrink: 0;">
+                    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">KYXX</span>
+                </div>
+                <div style="display: none; gap: 32px; font-size: 14px;" id="desktop-nav">
+                    <button onclick="scrollToSection('layanan')" class="nav-link" style="color: #737373; transition: color 0.2s;">Layanan</button>
+                    <button onclick="scrollToSection('testimoni')" class="nav-link" style="color: #737373; transition: color 0.2s;">Testimoni</button>
+                    <button onclick="scrollToSection('order')" class="nav-link" style="color: #737373; transition: color 0.2s;">Pesan</button>
+                    <button onclick="scrollToSection('pembayaran')" class="nav-link" style="color: #737373; transition: color 0.2s;">Pembayaran</button>
+                </div>
+                <button onclick="scrollToSection('layanan')" style="background-color: #1a1a1a; color: #fcfcfc; border-radius: 9999px; padding: 8px 16px; font-size: 14px; font-weight: 500; transition: all 0.2s; flex-shrink: 0;">
+                    Pesan Sekarang
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header style="position: relative; overflow: hidden;">
+            <div style="pointer-events: none; position: absolute; top: -160px; left: 50%; transform: translateX(-50%); width: 680px; height: 420px; border-radius: 50%; background-color: rgba(196, 30, 58, 0.1); filter: blur(60px);"></div>
+            <div style="pointer-events: none; position: absolute; right: -128px; top: 96px; width: 288px; height: 288px; border-radius: 50%; background-color: rgba(196, 30, 58, 0.05); filter: blur(60px);"></div>
+            <div style="position: relative; margin: 0 auto; max-width: 72rem; padding: 56px 16px 64px; text-align: center;" id="hero-content">
+                <span class="animate-fadeup" style="display: inline-flex; align-items: center; gap: 8px; border-radius: 9999px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #f5f5f5; padding: 6px 14px; font-size: 12px; font-weight: 500; color: #737373;">
+                    <span style="width: 6px; height: 6px; border-radius: 50%; background-color: #22c55e;"></span> Aktif 24/7 · Respon < 15 menit
+                </span>
+                <h1 class="animate-fadeup" style="margin: 24px auto 0; max-width: 56rem; font-size: 32px; font-weight: 700; line-height: 1.08; animation-delay: 80ms;">
+                    Layanan Digital yang 
+                    <span style="position: relative; display: inline-block; color: #c41e3a;">
+                        Tepat Waktu
+                        <svg style="position: absolute; bottom: -8px; left: 0; height: 10px; width: 100%; color: #c41e3a;" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true">
+                            <path d="M2 7 C 55 2, 145 9, 198 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </h1>
+                <p class="animate-fadeup" style="margin: 24px auto 0; max-width: 36rem; font-size: 16px; color: #737373; line-height: 1.6; animation-delay: 160ms;">
+                    Proses cepat, bukti jelas, dan pembayaran aman. Pilih layanan, isi form, dan selesai tanpa ribet.
+                </p>
+                <div style="margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;" id="stats-container">
+                    <div class="animate-fadeup" style="border-radius: 9999px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #f5f5f5; padding: 8px 20px; font-size: 14px; animation-delay: 220ms;">
+                        <span style="font-weight: 600; font-family: 'Space Grotesk', sans-serif;">4.9</span>
+                        <span style="color: #737373;"> / 5.0</span>
+                    </div>
+                    <div class="animate-fadeup" style="border-radius: 9999px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #f5f5f5; padding: 8px 20px; font-size: 14px; animation-delay: 280ms;">
+                        <span style="font-weight: 600; font-family: 'Space Grotesk', sans-serif;">10K+</span>
+                        <span style="color: #737373;"> pelanggan</span>
+                    </div>
+                    <div class="animate-fadeup" style="border-radius: 9999px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #f5f5f5; padding: 8px 20px; font-size: 14px; animation-delay: 340ms;">
+                        <span style="font-weight: 600; font-family: 'Space Grotesk', sans-serif;">100%</span>
+                        <span style="color: #737373;"> garansi</span>
+                    </div>
+                    <div class="animate-fadeup" style="border-radius: 9999px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #f5f5f5; padding: 8px 20px; font-size: 14px; animation-delay: 400ms;">
+                        <span style="font-weight: 600; font-family: 'Space Grotesk', sans-serif;">24/7</span>
+                        <span style="color: #737373;"> online</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Services Section -->
+        <section id="layanan" style="margin: 0 auto; max-width: 72rem; padding: 56px 16px; scroll-margin-top: 80px;">
+            <div style="margin-bottom: 32px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px;">
+                <h2 style="font-size: 24px; font-weight: 700;">Pilih layanan</h2>
+                <span style="font-size: 14px; color: #737373;">Tiga opsi · harga tetap</span>
+            </div>
+            <div style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));" id="services-grid">
+                <!-- Service cards will be rendered here -->
+            </div>
+        </section>
+
+        <!-- Testimoni Section -->
+        <section id="testimoni" style="border-top: 1px solid rgba(26, 26, 26, 0.12); border-bottom: 1px solid rgba(26, 26, 26, 0.12); background-color: rgba(245, 245, 245, 0.4);">
+            <div style="margin: 0 auto; max-width: 72rem; padding: 56px 16px;">
+                <h2 style="font-size: 24px; font-weight: 700;">Testimoni klien</h2>
+                <p style="margin-top: 8px; font-size: 14px; color: #737373;">Ratusan order tuntas dengan bukti yang bisa diunduh.</p>
+                <div style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px;" id="testimoni-grid">
+                    <!-- Testimonial images will be rendered here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Form Section -->
+        <section id="order" style="margin: 0 auto; max-width: 72rem; padding: 56px 16px; scroll-margin-top: 80px;">
+            <div style="display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: center;">
+                <div>
+                    <h2 style="font-size: 24px; font-weight: 700;">Isi form pesanan</h2>
+                    <p style="margin-top: 12px; max-width: 24rem; font-size: 14px; color: #737373; line-height: 1.5;">
+                        Lengkapi tiga kolom di samping. Kami konfirmasi via WhatsApp dalam 15 menit.
+                    </p>
+                    <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 8px; font-size: 14px;">
+                        <div style="display: flex; align-items: center; gap: 8px; color: #737373;">
+                            <span style="display: grid; width: 20px; height: 20px; place-items: center; border-radius: 50%; background-color: #fce4e8; font-size: 12px; color: #c41e3a;">1</span> Nomor WhatsApp
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; color: #737373;">
+                            <span style="display: grid; width: 20px; height: 20px; place-items: center; border-radius: 50%; background-color: #fce4e8; font-size: 12px; color: #c41e3a;">2</span> Target
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; color: #737373;">
+                            <span style="display: grid; width: 20px; height: 20px; place-items: center; border-radius: 50%; background-color: #fce4e8; font-size: 12px; color: #c41e3a;">3</span> Platform
+                        </div>
+                    </div>
+                    <div style="margin-top: 24px; border-radius: 16px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #f5f5f5; padding: 12px 16px; font-size: 14px;">
+                        Layanan dipilih: 
+                        <span style="font-weight: 600; font-family: 'Space Grotesk', sans-serif;" id="selected-service">belum dipilih</span>
+                    </div>
+                </div>
+
+                <form id="order-form" style="border-radius: 24px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #fcfcfc; padding: 24px;">
+                    <div>
+                        <label for="wa" style="font-size: 14px; font-weight: 500;">Nomor WhatsApp</label>
+                        <input id="wa" type="tel" inputmode="numeric" placeholder="08xxxxxxxxxx" style="margin-top: 8px; width: 100%; border-radius: 12px; border: 1px solid rgba(26, 26, 26, 0.15); background-color: rgba(245, 245, 245, 0.6); padding: 12px 16px; font-size: 14px;">
+                        <p style="margin-top: 6px; font-size: 12px; color: #737373;" id="wa-error">Format: 08 diikuti 9–13 digit</p>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <label for="target" style="font-size: 14px; font-weight: 500;" id="target-label">Username / Email / Nomor target</label>
+                        <input id="target" type="text" placeholder="Masukkan target" style="margin-top: 8px; width: 100%; border-radius: 12px; border: 1px solid rgba(26, 26, 26, 0.15); background-color: rgba(245, 245, 245, 0.6); padding: 12px 16px; font-size: 14px;">
+                        <p style="margin-top: 6px; font-size: 12px; color: #c41e3a; display: none;" id="target-error"></p>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <label for="platform" style="font-size: 14px; font-weight: 500;">Platform</label>
+                        <select id="platform" style="margin-top: 8px; width: 100%; border-radius: 12px; border: 1px solid rgba(26, 26, 26, 0.15); background-color: rgba(245, 245, 245, 0.6); padding: 12px 16px; font-size: 14px;">
+                            <option value="">Pilih platform…</option>
+                        </select>
+                        <p style="margin-top: 6px; font-size: 12px; color: #c41e3a; display: none;" id="platform-error"></p>
+                    </div>
+
+                    <button type="submit" style="margin-top: 28px; width: 100%; border-radius: 9999px; background-color: #c41e3a; color: #fcfcfc; padding: 14px 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none;">
+                        Lanjut ke pembayaran
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section id="pembayaran" style="border-top: 1px solid rgba(26, 26, 26, 0.12); background-color: rgba(245, 245, 245, 0.4);">
+            <div style="margin: 0 auto; max-width: 72rem; padding: 56px 16px;">
+                <h2 style="font-size: 24px; font-weight: 700;">Metode pembayaran</h2>
+                <p style="margin-top: 8px; font-size: 14px; color: #737373;">Transfer, lalu unggah bukti pembayaran untuk verifikasi.</p>
+
+                <div style="margin-top: 32px; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="border-radius: 24px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #fcfcfc; padding: 24px;">
+                            <span style="font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: #737373;">QRIS</span>
+                            <img src="https://www.image2url.com/r2/default/images/1787772739908-47110861-40c8-4efc-83fd-5151457aba6a.jpg" alt="Kode QR pembayaran" loading="lazy" style="margin: 16px auto 0; width: 160px; border-radius: 16px; border: 1px solid rgba(26, 26, 26, 0.12);">
+                            <p style="margin-top: 16px; text-align: center; font-size: 12px; color: #737373;">Scan dengan aplikasi pembayaran apa pun</p>
+                        </div>
+
+                        <div style="display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                            <div style="border-radius: 16px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #fcfcfc; padding: 16px;">
+                                <span style="font-size: 12px; font-weight: 600; color: #737373;">DANA</span>
+                                <p style="margin-top: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; word-break: break-all;">089654969632</p>
+                                <button onclick="copyText('089654969632', 'Nomor DANA')" style="margin-top: 12px; border-radius: 9999px; border: 1px solid rgba(26, 26, 26, 0.12); padding: 6px 12px; font-size: 12px; cursor: pointer; background: none;">Salin</button>
+                            </div>
+                            <div style="border-radius: 16px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #fcfcfc; padding: 16px;">
+                                <span style="font-size: 12px; font-weight: 600; color: #737373;">BRI</span>
+                                <p style="margin-top: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; word-break: break-all;">15279089654969632</p>
+                                <button onclick="copyText('15279089654969632', 'Nomor BRI')" style="margin-top: 12px; border-radius: 9999px; border: 1px solid rgba(26, 26, 26, 0.12); padding: 6px 12px; font-size: 12px; cursor: pointer; background: none;">Salin</button>
+                            </div>
+                        </div>
+
+                        <div onclick="document.getElementById('file-input').click()" style="cursor: pointer; border-radius: 16px; border: 2px dashed rgba(26, 26, 26, 0.15); background-color: #fcfcfc; padding: 24px; text-align: center; transition: border-color 0.3s;" id="upload-area">
+                            <p style="font-size: 14px; font-weight: 500;" id="file-label">Unggah bukti pembayaran</p>
+                            <p style="margin-top: 4px; font-size: 12px; color: #737373;" id="upload-error">JPG / PNG / PDF, maks 5 MB</p>
+                            <div style="margin-top: 16px; border-radius: 12px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: rgba(245, 245, 245, 0.5); padding: 24px 16px; font-size: 14px; color: #737373;">
+                                Klik untuk pilih file
+                            </div>
+                            <input type="file" id="file-input" accept="image/*,.pdf" style="display: none;" onchange="handleFileUpload(event)">
+                            <div id="preview-container" style="display: none; margin-top: 16px;">
+                                <img id="preview-image" alt="Pratinjau bukti pembayaran" style="border-radius: 12px; border: 1px solid #c41e3a; max-width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; justify-content: center; border-radius: 24px; border: 1px solid rgba(26, 26, 26, 0.12); background-color: #fcfcfc; padding: 24px;">
+                        <h3 style="font-size: 20px; font-weight: 600; font-family: 'Space Grotesk', sans-serif;">Konfirmasi pembayaran</h3>
+                        <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px;">
+                            <div style="border-radius: 12px; background-color: #f5f5f5; padding: 8px 12px;">
+                                <span style="font-size: 12px; color: #737373;">Layanan</span>
+                                <p style="font-weight: 600; font-family: 'Space Grotesk', sans-serif;" id="confirm-service">—</p>
+                            </div>
+                            <div style="border-radius: 12px; background-color: #f5f5f5; padding: 8px 12px;">
+                                <span style="font-size: 12px; color: #737373;">Total</span>
+                                <p style="font-weight: 600; font-family: 'Space Grotesk', sans-serif;" id="confirm-total">—</p>
+                            </div>
+                        </div>
+                        <p style="margin-top: 12px; font-size: 14px;">
+                            Status: 
+                            <span style="font-weight: 600; color: #c41e3a;" id="status-text">Menunggu pembayaran</span>
+                        </p>
+                        <ul style="margin-top: 20px; display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: #737373;">
+                            <li style="display: flex; gap: 10px;"><span style="color: #c41e3a;">✓</span> Total sesuai rincian order</li>
+                            <li style="display: flex; gap: 10px;"><span style="color: #c41e3a;">✓</span> Nama pengirim sesuai form</li>
+                            <li style="display: flex; gap: 10px;"><span style="color: #c41e3a;">✓</span> Bukti pembayaran terunggah</li>
+                            <li style="display: flex; gap: 10px;"><span style="color: #c41e3a;">✓</span> Verifikasi < 15 menit</li>
+                        </ul>
+                        <button onclick="confirmPayment()" id="confirm-btn" disabled style="margin-top: 32px; width: 100%; border-radius: 9999px; background-color: #1a1a1a; color: #fcfcfc; padding: 14px 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; opacity: 0.4; pointer-events: none;">
+                            Kirim bukti & konfirmasi
+                        </button>
+                        <p style="margin-top: 12px; text-align: center; font-size: 12px; color: #737373;">
+                            Dengan menekan tombol, order Anda masuk antrean.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="border-top: 1px solid rgba(26, 26, 26, 0.12);">
+            <div style="margin: 0 auto; max-width: 72rem; padding: 40px 16px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: #737373; text-align: center;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="https://i.ibb.co/GvG2LFKY/IMG-20260821-WA0005.jpg" alt="Logo KYXX Services" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                    <span style="font-weight: 700; font-family: 'Space Grotesk', sans-serif; color: #1a1a1a;">KYXX</span>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                    <span>kyxxstore.my.id</span>
+                    <span>kyxxstore5782@gmail.com</span>
+                    <span>0897-5332-940</span>
+                </div>
+                <p style="font-size: 12px;">© 2026 KYXX Services.</p>
+            </div>
+        </footer>
+
+        <!-- Toast Notification -->
+        <div id="toast" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; width: min(92vw, 26rem); border-radius: 12px; background-color: #1a1a1a; padding: 12px 16px; text-align: center; font-size: 14px; color: #fcfcfc; box-shadow: 0 10px 25px rgba(0,0,0,0.3); display: none; animation: fadeup 0.3s ease;"></div>
+    </div>
+
+    <script>
+        // Data
+        const LOGO = "https://i.ibb.co/GvG2LFKY/IMG-20260821-WA0005.jpg";
+        const QR = "https://www.image2url.com/r2/default/images/1787772739908-47110861-40c8-4efc-83fd-5151457aba6a.jpg";
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkjnwjyz";
+
+        const TESTIMONI = [
+            "https://www.image2url.com/r2/default/images/1787773550507-1ef881be-3e39-47b4-92b3-d1c8bbf9dce6.png",
+            "https://www.image2url.com/r2/default/images/1787773542759-595e615f-375e-4a2f-abb0-94581cb1685a.png",
+            "https://www.image2url.com/r2/default/images/1787773534731-b5b0aa5c-bec1-4b75-8fbb-36a2cd4590ab.png",
+            "https://www.image2url.com/r2/default/images/1787773379985-d568261b-2549-4659-81d1-c0393103be93.png",
+            "https://www.image2url.com/r2/default/images/1787773373397-61366c39-241f-41da-afb3-b2e97fbefb09.png",
+            "https://www.image2url.com/r2/default/images/1787773366990-b347ebd9-0025-441d-ac30-8e8da7746b48.png",
+            "https://www.image2url.com/r2/default/images/1787773359474-46306ebf-a058-4d6d-ad88-79935b7e6bc9.png",
+            "https://www.image2url.com/r2/default/images/1787773353453-a8e94c9a-aacf-4a02-90b0-bab93e99960c.png"
+        ];
+
+        const SERVICES = [
+            {
+                id: "hapus",
+                num: "01",
+                name: "Hapus Akun",
+                desc: "Nonaktifkan akun secara permanen dan terverifikasi.",
+                price: 150000,
+                popular: false,
+                features: ["Hapus permanen semua platform", "Proses 1 menit", "Tanpa jejak digital", "Garansi 100% berhasil"]
+            },
+            {
+                id: "lacak",
+                num: "02",
+                name: "Lacak Lokasi",
+                desc: "Lacak posisi real-time dengan akurasi tinggi.",
+                price: 100000,
+                popular: true,
+                features: ["Lacak real-time akurat", "Proses 1 menit", "Riwayat lokasi lengkap", "Hasil akurat 99%"]
+            },
+            {
+                id: "pemulihan",
+                num: "03",
+                name: "Pemulihan Akun",
+                desc: "Kembalikan akses akun yang terkunci atau hilang.",
+                price: 100000,
+                popular: false,
+                features: ["Pulihkan akun diretas", "Buka blokir akun", "Proses 1 menit", "Keamanan terjamin"]
+            }
+        ];
+
+        const PLATFORMS = [
+            "Instagram", "Facebook", "WhatsApp", "TikTok", "Twitter/X", "Telegram", 
+            "YouTube", "Gmail", "Google", "Snapchat", "Discord", "LINE", 
+            "Mobile Legends", "Free Fire", "PUBG Mobile", "Genshin Impact", "Lainnya"
+        ];
+
+        // State
+        let selectedService = null;
+        let fileData = null;
+        let fileInfo = null;
+        let status = "menunggu";
+        let formSubmitted = false;
+
+        // Utility functions
+        const rupiah = (n) => "Rp" + n.toLocaleString("id-ID");
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.textContent = msg;
+            toast.style.display = "block";
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 2600);
+        }
+
+        function copyText(text, label) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).catch(() => {});
+            }
+            showToast(`${label} disalin.`);
+        }
+
+        // Render Services
+        function renderServices() {
+            const grid = document.getElementById("services-grid");
+            grid.innerHTML = "";
+            
+            SERVICES.forEach((s, index) => {
+                const card = document.createElement("div");
+                card.style.cssText = `
+                    position: relative; 
+                    border-radius: 24px; 
+                    border: 1px solid ${s.popular || selectedService?.id === s.id ? '#c41e3a' : 'rgba(26, 26, 26, 0.12)'}; 
+                    background-color: #f5f5f5; 
+                    padding: 24px; 
+                    transition: all 0.3s;
+                `;
+                card.onmouseenter = () => {
+                    card.style.transform = "translateY(-4px)";
+                    card.style.boxShadow = "0 10px 25px rgba(0,0,0,0.1)";
+                };
+                card.onmouseleave = () => {
+                    card.style.transform = "none";
+                    card.style.boxShadow = "none";
+                };
+                
+                card.innerHTML = `
+                    ${s.popular ? '<span style="position: absolute; top: -12px; left: 24px; border-radius: 9999px; background-color: #c41e3a; padding: 4px 12px; font-size: 11px; font-weight: 600; color: #fcfcfc;">Populer</span>' : ''}
+                    <span style="font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: #c41e3a;">${s.num}</span>
+                    <h3 style="margin-top: 12px; font-size: 18px; font-weight: 600; font-family: 'Space Grotesk', sans-serif;">${s.name}</h3>
+                    <p style="margin-top: 6px; font-size: 14px; color: #737373; line-height: 1.5;">${s.desc}</p>
+                    <p style="margin-top: 20px; font-size: 24px; font-weight: 700; font-family: 'Space Grotesk', sans-serif;">${rupiah(s.price)}</p>
+                    <ul style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 14px;">
+                        ${s.features.map(f => `<li style="display: flex; gap: 8px;"><span style="color: #c41e3a;">✓</span> ${f}</li>`).join("")}
+                    </ul>
+                    <button onclick="selectService('${s.id}')" style="margin-top: 24px; width: 100%; border-radius: 9999px; padding: 10px 16px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; border: none; background-color: ${s.popular ? '#c41e3a' : '#1a1a1a'}; color: #fcfcfc;">
+                        ${selectedService?.id === s.id ? 'Dipilih ✓' : 'Pesan'}
+                    </button>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Render Testimonials
+        function renderTestimonials() {
+            const grid = document.getElementById("testimoni-grid");
+            grid.innerHTML = "";
+            
+            TESTIMONI.forEach((src, i) => {
+                const div = document.createElement("div");
+                div.style.cssText = `
+                    overflow: hidden; 
+                    border-radius: 16px; 
+                    border: 1px solid rgba(26, 26, 26, 0.12); 
+                    background-color: #fcfcfc; 
+                    transition: transform 0.3s;
+                `;
+                div.onmouseenter = () => div.style.transform = "translateY(-4px)";
+                div.onmouseleave = () => div.style.transform = "none";
+                
+                const img = document.createElement("img");
+                img.src = src;
+                img.alt = `Bukti testimoni pelanggan ${i + 1}`;
+                img.loading = "lazy";
+                img.style.cssText = "width: 100%; height: 100%; object-fit: cover;";
+                
+                div.appendChild(img);
+                grid.appendChild(div);
+            });
+        }
+
+        // Render Platforms
+        function renderPlatforms() {
+            const select = document.getElementById("platform");
+            PLATFORMS.forEach(p => {
+                const option = document.createElement("option");
+                option.value = p;
+                option.textContent = p;
+                select.appendChild(option);
+            });
+        }
+
+        // Select Service
+        function selectService(id) {
+            selectedService = SERVICES.find(s => s.id === id);
+            formSubmitted = false;
+            status = "menunggu";
+            
+            // Update UI
+            document.getElementById("selected-service").textContent = 
+                selectedService ? `${selectedService.name} · ${rupiah(selectedService.price)}` : "belum dipilih";
+            
+            renderServices();
+            
+            setTimeout(() => scrollToSection("order"), 40);
+        }
+
+        // Form validation
+        function validateForm() {
+            const wa = document.getElementById("wa").value.trim();
+            const target = document.getElementById("target").value.trim();
+            const platform = document.getElementById("platform").value;
+            
+            const errors = {};
+            
+            if (!wa) {
+                errors.wa = "Nomor WhatsApp wajib diisi.";
+            } else if (!/^0\d{8,13}$/.test(wa.replace(/[\s-]/g, ""))) {
+                errors.wa = "Format harus 08 diikuti 9–13 digit.";
+            }
+            
+            if (!target) {
+                errors.target = "Target wajib diisi.";
+            } else if (target.length < 3) {
+                errors.target = "Minimal 3 karakter.";
+            }
+            
+            if (!platform) {
+                errors.platform = "Pilih salah satu platform.";
+            }
+            
+            return errors;
+        }
+
+        // Handle form submit
+        document.getElementById("order-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            formSubmitted = true;
+            
+            const errors = validateForm();
+            
+            // Update error displays
+            const waError = document.getElementById("wa-error");
+            const targetError = document.getElementById("target-error");
+            const platformError = document.getElementById("platform-error");
+            
+            if (errors.wa) {
+                waError.textContent = errors.wa;
+                waError.style.color = "#c41e3a";
+                document.getElementById("wa").style.borderColor = "#c41e3a";
+            } else {
+                waError.textContent = "Format: 08 diikuti 9–13 digit";
+                waError.style.color = "#737373";
+                document.getElementById("wa").style.borderColor = "rgba(26, 26, 26, 0.15)";
+            }
+            
+            if (errors.target) {
+                targetError.textContent = errors.target;
+                targetError.style.display = "block";
+                document.getElementById("target").style.borderColor = "#c41e3a";
+            } else {
+                targetError.style.display = "none";
+                document.getElementById("target").style.borderColor = "rgba(26, 26, 26, 0.15)";
+            }
+            
+            if (errors.platform) {
+                platformError.textContent = errors.platform;
+                platformError.style.display = "block";
+                document.getElementById("platform").style.borderColor = "#c41e3a";
+            } else {
+                platformError.style.display = "none";
+                document.getElementById("platform").style.borderColor = "rgba(26, 26, 26, 0.15)";
+            }
+            
+            if (Object.keys(errors).length > 0) {
+                showToast("Lengkapi data yang ditandai merah.");
+                return;
+            }
+            
+            if (!selectedService) {
+                showToast("Pilih layanan terlebih dahulu.");
+                scrollToSection("layanan");
+                return;
+            }
+            
+            status = "menunggu";
+            document.getElementById("status-text").textContent = "Menunggu pembayaran";
+            document.getElementById("status-text").style.color = "#c41e3a";
+            
+            // Update confirmation
+            document.getElementById("confirm-service").textContent = selectedService.name;
+            document.getElementById("confirm-total").textContent = rupiah(selectedService.price);
+            
+            setTimeout(() => scrollToSection("pembayaran"), 40);
+            showToast("Data tersimpan. Lanjut ke pembayaran.");
+        });
+
+        // Handle platform change
+        document.getElementById("platform").addEventListener("change", function() {
+            const targetLabel = document.getElementById("target-label");
+            if (this.value === "WhatsApp") {
+                targetLabel.textContent = "Username akun kamu (sosmed)";
+            } else {
+                targetLabel.textContent = "Username / Email / Nomor target";
+            }
+        });
+
+        // Handle file upload
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const uploadError = document.getElementById("upload-error");
+            const fileLabel = document.getElementById("file-label");
+            const previewContainer = document.getElementById("preview-container");
+            const previewImage = document.getElementById("preview-image");
+            
+            // Validate file size (max 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                uploadError.textContent = "Ukuran file melebihi 5 MB.";
+                uploadError.style.color = "#c41e3a";
+                fileData = null;
+                fileInfo = null;
+                previewContainer.style.display = "none";
+                document.getElementById("upload-area").style.borderColor = "#c41e3a";
+                return;
+            }
+            
+            // Validate file type
+            if (!["image/jpeg", "image/jpg", "image/png", "application/pdf"].includes(file.type)) {
+                uploadError.textContent = "Format tidak didukung. Gunakan JPG, PNG, atau PDF.";
+                uploadError.style.color = "#c41e3a";
+                fileData = null;
+                fileInfo = null;
+                previewContainer.style.display = "none";
+                document.getElementById("upload-area").style.borderColor = "#c41e3a";
+                return;
+            }
+            
+            // Valid file
+            uploadError.textContent = "JPG / PNG / PDF, maks 5 MB";
+            uploadError.style.color = "#737373";
+            document.getElementById("upload-area").style.borderColor = "rgba(26, 26, 26, 0.15)";
+            fileLabel.textContent = `Terpilih: ${file.name}`;
+            fileInfo = file;
+            
+            // Preview if image
+            if (file.type.startsWith("image/")) {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    previewImage.src = ev.target.result;
+                    previewContainer.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewContainer.style.display = "none";
+            }
+            
+            // Enable confirm button if form is valid
+            updateConfirmButton();
+        }
+
+        // Update confirm button state
+        function updateConfirmButton() {
+            const btn = document.getElementById("confirm-btn");
+            const hasFile = fileInfo !== null;
+            const canSubmit = hasFile && selectedService && status === "menunggu";
+            
+            if (canSubmit) {
+                btn.disabled = false;
+                btn.style.opacity = "1";
+                btn.style.pointerEvents = "auto";
+            } else {
+                btn.disabled = true;
+                btn.style.opacity = "0.4";
+                btn.style.pointerEvents = "none";
+            }
+        }
+
+        // Confirm payment
+        async function confirmPayment() {
+            if (!fileInfo) {
+                showToast("Unggah bukti pembayaran dulu.");
+                return;
+            }
+            
+            const btn = document.getElementById("confirm-btn");
+            btn.textContent = "Mengirim…";
+            btn.disabled = true;
+            btn.style.opacity = "0.6";
+            
+            try {
+                // Convert file to base64
+                const base64 = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(fileInfo);
+                });
+                
+                const formData = {
+                    nomor_whatsapp: document.getElementById("wa").value,
+                    target: document.getElementById("target").value,
+                    platform: document.getElementById("platform").value,
+                    layanan: selectedService?.name,
+                    harga: selectedService?.price,
+                    nama_file_bukti: fileInfo.name,
+                    bukti_pembayaran: base64,
+                    waktu_kirim: new Date().toLocaleString("id-ID")
+                };
+                
+                const res = await fetch(FORMSPREE_ENDPOINT, {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json", 
+                        "Accept": "application/json" 
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (!res.ok) throw new Error("network");
+                
+                status = "berhasil";
+                document.getElementById("status-text").textContent = "Order berhasil";
+                document.getElementById("status-text").style.color = "#22c55e";
+                btn.textContent = "Terkirim ✓";
+                
+                showToast("Order berhasil dikirim. Kami proses segera.");
+            } catch (error) {
+                showToast("Gagal mengirim bukti. Coba lagi.");
+                btn.textContent = "Kirim bukti & konfirmasi";
+                updateConfirmButton();
+            }
+        }
+
+        // Initialize
+        function init() {
+            renderServices();
+            renderTestimonials();
+            renderPlatforms();
+            
+            // Responsive nav display
+            const desktopNav = document.getElementById("desktop-nav");
+            const handleResize = () => {
+                if (window.innerWidth >= 768) {
+                    desktopNav.style.display = "flex";
+                } else {
+                    desktopNav.style.display = "none";
+                }
+            };
+            
+            handleResize();
+            window.addEventListener("resize", handleResize);
+        }
+
+        // Run initialization when DOM is ready
+        document.addEventListener("DOMContentLoaded", init);
+        // Also run if DOM is already loaded
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            init();
+        }
+    </script>
+</body>
+                          </html>
